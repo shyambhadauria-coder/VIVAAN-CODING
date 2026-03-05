@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Details Form</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+}
+
+.container{
+    width: 350px;
+    margin: auto;
+    margin-top: 50px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+h1{
+    text-align: center;
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label{
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+input[type="submit"]{
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color: #45a049;
+}
+
+.section{
+    margin-top: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Personal Details Form</h1>
+
+<form>
+
+<div class="section">
+<label style="color:red;">Name</label>
+<input type="text" name="name">
+</div>
+
+<div class="section">
+<label style="color:coral;">Email ID</label>
+<input type="email" name="email">
+</div>
+
+<div class="section">
+<label style="color:blue;">Phone Number (This will be hidden)</label>
+<input type="password" name="phone">
+</div>
+
+<div class="section">
+<label style="color:cyan;">Gender</label><br>
+<input type="radio" name="gender" value="female"> Female<br>
+<input type="radio" name="gender" value="male"> Male
+</div>
+
+<div class="section">
+<label style="color:chartreuse;">Favourite City</label><br>
+<input type="checkbox" value="New Delhi"> New Delhi<br>
+<input type="checkbox" value="Mumbai"> Mumbai
+</div>
+
+<input type="submit" value="Submit">
+
+</form>
+
+</div>
+
+</body>
+</html>
