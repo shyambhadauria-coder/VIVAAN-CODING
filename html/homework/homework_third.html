@@ -1,83 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jujutsu Kaisen</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jujutsu Kaisen Fan Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+    /* CSS Variables for easy theming */
+    :root {
+        --primary-color: #66fcf1;
+        --secondary-color: #45a29e;
+        --bg-color: #0b0c10;
+        --card-bg: #1f2833;
+        --text-color: #f5f5f5;
+        --subtext-color: #c5c6c7;
+        --border-radius: 12px;
+        --transition-speed: 0.3s;
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    h1, h2 {
+        font-family: 'Pacifico', cursive;
+        text-align: center;
+        color: var(--primary-color);
+        margin: 1rem 0;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        max-width: 800px;
+        margin: 0.5rem auto 1.5rem;
+        text-align: center;
+        color: var(--subtext-color);
+        font-size: 1.1rem;
+    }
+
+    /* Hero Section */
+    .hero-img {
+        display: block;
+        max-width: 90%;
+        margin: 1.5rem auto;
+        border-radius: var(--border-radius);
+        box-shadow: 0 0 20px var(--secondary-color);
+        transition: transform var(--transition-speed);
+    }
+
+    .hero-img:hover {
+        transform: scale(1.02);
+    }
+
+    /* Character Cards */
+    .character-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1100px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .character-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.2rem;
+        text-align: center;
+        border: 2px solid var(--secondary-color);
+        transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .character-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px var(--primary-color);
+    }
+
+    .character-card h3 {
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+    }
+
+    .character-card p {
+        margin: 0.25rem 0;
+        color: var(--subtext-color);
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 1.5rem 0;
+        background-color: var(--card-bg);
+        color: var(--secondary-color);
+        margin-top: 3rem;
+    }
+
+    /* Responsive Typography */
+    @media (max-width: 600px) {
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+        p { font-size: 1rem; }
+    }
+
+</style>
 </head>
-<body style="background-color:yellow">
-    <style>
-        h1 {
-            text-align: center;
-            color: lawngreen;
-            background-color: red;
-        }
-        p {
-            text-align: center;
-            font-family: cursive;
-        }
-        td {
-            font-family: cursive;
-            text-align: center;
-        }
-    </style>
+<body>
+
+<header>
     <h1>Jujutsu Kaisen</h1>
-    <p>Jujutsu Kaisen is probably one of the best animes in the world. Mainly for its characters, such as Satoru Gojo and Ryomen Sukuna. It is also very hyped up, because when Season 3: The Culling Games is going to legendary!</p>
-    <img src="https://preview.redd.it/jujutsu-kaisen-season-3-the-culling-game-part-1-key-visual-v0-1r469ihki5cg1.jpeg?auto=webp&s=2a7fa0edde0b10feb22afbd945dffc8aafe7d42c" width="550px">
-    <h1>Essential Characters</h1>
-    <p> There are lots of character who are trying to overthrow the man behind the Culling Games, which we will explain in the table below. Many came for to fun of it, while others were trying to release Satoru Gojo from a barrier called the Prison Realm.</p>
-    <table border="10">
-        <tr>
-        <th>Name of Character:</th>
-        <th>Cursed Technique:</th>
-        <th>Ally or Opponent:</th>
-        <th>Status:</th>
-        <th>Era origin:</th>
-        </tr>
-        <tr>
-            <td>Yuji Itadori</td>
-            <td>Shrine and Blood Manipulation</td>
-            <td>Ally</td>
-            <td>Alive</td>
-            <td>Modern and Heian Era</td>
-        </tr>
-        <tr>
-            <td>Megumi Fushiguro</td>
-            <td>Ten Shadows Technique</td>
-            <td>Ally</td>
-            <td>Alive</td>
-            <td>Modern Era</td>
-        </tr>
-        <tr>
-            <td>Hajime Kashimo</td>
-            <td>Mythical Beast:Amber</td>
-            <td> Opponent turned Ally </td>
-            <td>Deceased</td>
-            <td>Edo Era</td>
-        </tr>
-        <tr>
-            <td>Kenjaku</td>
-            <td>Brain Transplant</td>
-            <td>Opponent</td>
-            <td>Deceased</td>
-            <td>Heian Era</td>
-        </tr>
-        <tr>
-            <td>Maki Zen'in</td>
-            <td>Heavenly Restriction</td>
-            <td>Ally</td>
-            <td>Alive</td>
-            <td>Modern Era</td>
-        </tr>
-        <tr>
-            <td>Satoru Gojo</td>
-            <td>Limitless and Six Eyes</td>
-            <td>Ally</td>
-            <td>Alive
-            <td>Modern Era</td>
-            </td>
-        </tr>
-    </table>
-    <p>Hopefully you get some good information from that!</p>
+    <p>One of the most exciting anime series in recent times. Full of unique characters, epic battles, and a storyline that captivates fans worldwide. Season 3: The Culling Games is set to be legendary!</p>
+    <img class="hero-img" src="https://preview.redd.it/jujutsu-kaisen-season-3-the-culling-game-part-1-key-visual-v0-1r469ihki5cg1.jpeg?auto=webp&s=2a7fa0edde0b10feb22afbd945dffc8aafe7d42c" alt="Jujutsu Kaisen Season 3 Key Visual">
+</header>
+
+<main>
+    <section>
+        <h2>Essential Characters</h2>
+        <p>Below are some of the most important characters in the Culling Games. Each has unique abilities and motives!</p>
+        
+        <div class="character-container">
+            <article class="character-card">
+                <h3>Yuji Itadori</h3>
+                <p><strong>Cursed Technique:</strong> Shrine and Blood Manipulation</p>
+                <p><strong>Ally/Opponent:</strong> Ally</p>
+                <p><strong>Status:</strong> Alive</p>
+                <p><strong>Era:</strong> Modern and Heian</p>
+            </article>
+            <article class="character-card">
+                <h3>Megumi Fushiguro</h3>
+                <p><strong>Cursed Technique:</strong> Ten Shadows Technique</p>
+                <p><strong>Ally/Opponent:</strong> Ally</p>
+                <p><strong>Status:</strong> Alive</p>
+                <p><strong>Era:</strong> Modern</p>
+            </article>
+            <article class="character-card">
+                <h3>Hajime Kashimo</h3>
+                <p><strong>Cursed Technique:</strong> Mythical Beast: Amber</p>
+                <p><strong>Ally/Opponent:</strong> Opponent turned Ally</p>
+                <p><strong>Status:</strong> Deceased</p>
+                <p><strong>Era:</strong> Edo</p>
+            </article>
+            <article class="character-card">
+                <h3>Kenjaku</h3>
+                <p><strong>Cursed Technique:</strong> Brain Transplant</p>
+                <p><strong>Ally/Opponent:</strong> Opponent</p>
+                <p><strong>Status:</strong> Deceased</p>
+                <p><strong>Era:</strong> Heian</p>
+            </article>
+            <article class="character-card">
+                <h3>Maki Zen'in</h3>
+                <p><strong>Cursed Technique:</strong> Heavenly Restriction</p>
+                <p><strong>Ally/Opponent:</strong> Ally</p>
+                <p><strong>Status:</strong> Alive</p>
+                <p><strong>Era:</strong> Modern</p>
+            </article>
+            <article class="character-card">
+                <h3>Satoru Gojo</h3>
+                <p><strong>Cursed Technique:</strong> Limitless and Six Eyes</p>
+                <p><strong>Ally/Opponent:</strong> Ally</p>
+                <p><strong>Status:</strong> Alive</p>
+                <p><strong>Era:</strong> Modern</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2026 Jujutsu Kaisen Fan Page
+</footer>
+
 </body>
 </html>
