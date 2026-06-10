@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid & Column Playground</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            padding: 30px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .playground-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        /* Custom styling to make the Bootstrap grid visible */
+        .demo-row {
+            background-color: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            min-height: 120px;
+            border-radius: 8px;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+        .demo-col {
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .col-box {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(13, 110, 253, 0.2);
+            border: 2px solid #0a58ca;
+        }
+        .grid-guide {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4px;
+            margin-bottom: 5px;
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+            font-family: monospace;
+        }
+        .grid-tick {
+            background: #e2e8f0;
+            padding: 2px 0;
+            border-radius: 3px;
+        }
+        .code-preview {
+            background-color: #1e1e24;
+            color: #38ef7d;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">Bootstrap Grid Lab 🧪</h1>
+        <p class="text-muted">Master columns and alignment by tweaking the live settings below!</p>
+    </div>
+
+    <div class="row text-dark">
+        <div class="col-md-4">
+            <div class="playground-card">
+                <h4 class="fw-bold mb-3">Settings</h4>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Number of Blocks:</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="adjustCount(-1)">- Remove</button>
+                        <span id="col-count-text" class="fw-bold px-3 fs-5">3</span>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="adjustCount(1)">+ Add</button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="span-range" class="form-label fw-semibold">Block Width (<span id="span-val">3</span> out of 12 slots):</label>
+                    <input type="range" class="form-range" id="span-range" min="1" max="12" value="3" oninput="updateGrid()">
+                    <small class="text-muted text-block">Sets the Bootstrap class: <code id="class-code">col-3</code></small>
+                </div>
+
+                <hr>
+
+                <div class="mb-3">
+                    <label for="align-select" class="form-label fw-semibold">Horizontal Alignment:</label>
+                    <select id="align-select" class="form-select" onchange="updateGrid()">
+                        <option value="justify-content-start">justify-content-start (Left)</option>
+                        <option value="justify-content-center">justify-content-center (Center)</option>
+                        <option value="justify-content-end">justify-content-end (Right)</option>
+                        <option value="justify-content-space-between">justify-content-between (Split edges)</option>
+                        <option value="justify-content-space-around">justify-content-around (Even spaces)</option>
+                    </select>
+                    <small class="text-muted">Only alters positioning if total slots used are less than 12!</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="playground-card">
+                <h4 class="fw-bold mb-1">Live Grid View</h4>
+                <p class="text-muted small mb-3">The background grid represents Bootstrap's 12-column template layout.</p>
+                
+                <div class="grid-guide">
+                    <div class="grid-tick">1</div><div class="grid-tick">2</div><div class="grid-tick">3</div>
+                    <div class="grid-tick">4</div><div class="grid-tick">5</div><div class="grid-tick">6</div>
+                    <div class="grid-tick">7</div><div class="grid-tick">8</div><div class="grid-tick">9</div>
+                    <div class="grid-tick">10</div><div class="grid-tick">11</div><div class="grid-tick">12</div>
+                </div>
+
+                <div class="row demo-row d-flex" id="live-row">
+                    </div>
+
+                <div class="alert alert-info mt-3 py-2" id="math-alert">
+                    Total spaces filled: <strong>9 / 12 slots</strong>.
+                </div>
+
+                <h5 class="fw-bold mt-4">Generated Code Code:</h5>
+                <div class="code-preview" id="code-output">
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let colCount = 3;
+
+    function adjustCount(amount) {
+        let newCount = colCount + amount;
+        if (newCount >= 1 && newCount <= 12) {
+            colCount = newCount;
+            document.getElementById('col-count-text').innerText = colCount;
+            updateGrid();
+        }
+    }
+
+    function updateGrid() {
+        const spanValue = document.getElementById('span-range').value;
+        const alignmentClass = document.getElementById('align-select').value;
+        const liveRow = document.getElementById('live-row');
+        const mathAlert = document.getElementById('math-alert');
+        
+        // Update label text
+        document.getElementById('span-val').innerText = spanValue;
+        document.getElementById('class-code').innerText = 'col-' + spanValue;
+
+        // Calculate total grid space used
+        const totalSpaceUsed = colCount * spanValue;
+        
+        if (totalSpaceUsed > 12) {
+            mathAlert.className = "alert alert-warning mt-3 py-2";
+            mathAlert.innerHTML = `Total columns exceed 12 slots (${totalSpaceUsed}/12)! Elements will automatically <strong>wrap down to the next row</strong>.`;
+        } else {
+            mathAlert.className = "alert alert-info mt-3 py-2";
+            mathAlert.innerHTML = `Total spaces filled: <strong>${totalSpaceUsed} / 12 slots</strong>. Remaining space leaves room for alignment!`;
+        }
+
+        // Apply alignment class to row element
+        // Clear old justify classes first
+        liveRow.className = "row demo-row d-flex"; 
+        // Add selected alignment class
+        // Bootstrap maps 'space-between' to 'justify-content-between'
+        let cleanAlignClass = alignmentClass;
+        if(alignmentClass === "justify-content-space-between") cleanAlignClass = "justify-content-between";
+        if(alignmentClass === "justify-content-space-around") cleanAlignClass = "justify-content-around";
+        liveRow.classList.add(cleanAlignClass);
+
+        // Clear and rebuild column items inside the row
+        liveRow.innerHTML = "";
+        let codeInnerStr = "";
+
+        for (let i = 1; i <= colCount; i++) {
+            // Create element node
+            let colDiv = document.createElement('div');
+            colDiv.className = `demo-col col-${spanValue}`;
+            
+            let boxDiv = document.createElement('div');
+            boxDiv.className = "col-box";
+            boxDiv.innerText = `Block ${i}`;
+            
+            colDiv.appendChild(boxDiv);
+            liveRow.appendChild(colDiv);
+
+            // Build string for the code visualization panel
+            codeInnerStr += `  &lt;div class="col-${spanValue}"&gt; Block ${i} &lt;/div&gt;\n`;
+        }
+
+        // Update code helper preview box
+        document.getElementById('code-output').innerHTML = 
+`&lt;div class="row ${cleanAlignClass}"&gt;
+${codeInnerStr}&lt;/div&gt;`;
+    }
+
+    // Initialize display when app opens
+    updateGrid();
+</script>
+</body>
+</html>
